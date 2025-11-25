@@ -1,0 +1,98 @@
+[?25l[0K
+   [36m⠙[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠹[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠸[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠼[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠴[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠦[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠧[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠇[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠏[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠋[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠙[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠹[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠸[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠼[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠴[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠦[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠧[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠇[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠏[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+   [36m⠋[39m  [2mNx is waiting on 1 dependent project tasks before running tasks from[22m auth[2m...[22m[0K
+[0J[2A[0K
+[2m   [2m✔[22m[2m  1/1 dependent project tasks succeeded [2m[0 read from cache][22m[2m[22m[0K
+[0J
+   [2mHint: you can run the command with[22m --verbose [2mto see the full dependent project outputs[22m
+
+[2m[90m———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————[39m[22m
+
+
+[2m> [22m[2mnx run[22m auth:build:development
+
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 128 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (42f70aac6ada50f5)
+[0K
+[2m[32m———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————[39m[22m[0K
+[0K
+[0m[7m[1m[32m NX [39m[22m[27m[0m  [32mSuccessfully ran target [1mbuild[22m for project auth and [1m1[22m task it depends on[39m[2m (7s)[22m[0K
+[0K
+[0J[?25h
+[0m[7m[1m[33m NX [39m[22m[27m[0m  [33mNx Cloud encountered some problems[39m
+
+This workspace is more than three days old and is not connected. Workspaces must be connected within 3 days of creation. Claim your workspace at https://cloud.nx.app. (code: 401)
+
+[?25h[?25h[1m[31mDebugger listening on ws://localhost:9229/891954d7-c5e3-479d-b822-a4086c53ec89[39m[22m
+[1m[31mFor help, see: https://nodejs.org/en/docs/inspector[39m[22m
+[1m[31m[39m[22m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +21ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mResponseHandlerModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPdfServiceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +125ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +18ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDBModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDBModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthenticationModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/api}:[39m[38;5;3m +6ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthenticationController {/api/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/register-super-admin, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/create-user, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/user-list, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/create-client, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/client-list, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/google, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/google/callback, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/auth/generate-certificate-from-template, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+[32m[Nest] 39370  - [39m11/25/2025, 2:41:45 PM [32m    LOG[39m [32m🚀 Application is running on: http://localhost:3000/api[39m
+^C

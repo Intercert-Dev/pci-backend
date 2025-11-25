@@ -1,5 +1,5 @@
 {
-  "16530821369336000013": {
+  "10609186327310003509": {
     "targets": {
       "build": {
         "command": "webpack-cli build",
@@ -123,7 +123,7 @@
     },
     "metadata": {}
   },
-  "2366869547942149837": {
+  "13580671133056357373": {
     "targets": {
       "build": {
         "command": "webpack-cli build",

@@ -36,82 +36,438 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".nx/workspace-data/d/daemon.log",
-        "hash": "11541209868543105150"
+        "file": "libs/database/src/entities/index.ts",
+        "hash": "9803806785816714809"
       },
       {
-        "file": "eslint.config.mjs",
-        "hash": "10770449096712831357"
+        "file": "libs/database/tsconfig.lib.json",
+        "hash": "13775090579126667924"
       },
       {
-        "file": "package-lock.json",
-        "hash": "3721612486811584563"
-      },
-      {
-        "file": "tsconfig.json",
-        "hash": "14894670411097092868"
-      },
-      {
-        "file": ".nx/workspace-data/file-map.json",
-        "hash": "808526195723572679"
-      },
-      {
-        "file": ".env",
-        "hash": "14311038923722710543"
-      },
-      {
-        "file": ".nx/workspace-data/source-maps.json",
-        "hash": "1389868326933519382"
-      },
-      {
-        "file": ".git/index",
-        "hash": "1641704456819543145"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": ".nx/workspace-data/webpack-5621830741124012108.hash",
-        "hash": "9451556755567591959"
-      },
-      {
-        "file": "nx.json",
-        "hash": "6341820902792539976"
-      },
-      {
-        "file": "README.md",
-        "hash": "6647490045346801999"
-      },
-      {
-        "file": ".nx/workspace-data/jest-7930610538513362720.hash",
-        "hash": "12235413321452872762"
-      },
-      {
-        "file": ".git/index.lock",
-        "hash": "3244421341483603138"
+        "file": "libs/constants/commonConstants.ts",
+        "hash": "50510752875654312"
       },
       {
         "file": "jest.config.ts",
         "hash": "6870352021923392442"
       },
       {
-        "file": ".nx/workspace-data/project-graph.json",
-        "hash": "1273301412354403165"
+        "file": "tsconfig.base.json",
+        "hash": "15271102444815702258"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "7009223072246632953"
+      },
+      {
+        "file": "libs/database/src/entities/session.entity.ts",
+        "hash": "16144356638798481477"
+      },
+      {
+        "file": "libs/database/src/repositories/client.repository.ts",
+        "hash": "1684677939683714182"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "libs/interfaces/authentication/client.interface.ts",
+        "hash": "10751981939005018261"
+      },
+      {
+        "file": "libs/dtos/authentication/user.dto.ts",
+        "hash": "6395135859427922842"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "14894670411097092868"
+      },
+      {
+        "file": "libs/constants/authentication/userConstants.ts",
+        "hash": "7962405617524121282"
+      },
+      {
+        "file": "libs/response-handler/response-handler.service.ts",
+        "hash": "4522247969500569690"
+      },
+      {
+        "file": "nx.json",
+        "hash": "6341820902792539976"
+      },
+      {
+        "file": "libs/config/config.service.spec.ts",
+        "hash": "5067595339138905363"
+      },
+      {
+        "file": "libs/utils/bcryptUtil.ts",
+        "hash": "4257059618625520418"
+      },
+      {
+        "file": "libs/interfaces/commonTypes/apiResponse.interface.ts",
+        "hash": "2202475748421077137"
+      },
+      {
+        "file": "libs/jwt-service/jwt.service.ts",
+        "hash": "16958592900398308547"
+      },
+      {
+        "file": "libs/config/config.default.ts",
+        "hash": "13237254959253133380"
+      },
+      {
+        "file": "libs/database/src/database.service.ts",
+        "hash": "11797231752229143149"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "10770449096712831357"
+      },
+      {
+        "file": "libs/database/src/repositories/session.repository.ts",
+        "hash": "16555408030554708918"
+      },
+      {
+        "file": "libs/interfaces/authentication/updateClient.interface.ts",
+        "hash": "14515255170655353132"
+      },
+      {
+        "file": "libs/database/src/database.module.ts",
+        "hash": "627813103666462162"
+      },
+      {
+        "file": "README.md",
+        "hash": "6647490045346801999"
+      },
+      {
+        "file": "libs/response-handler/response-handler.module.ts",
+        "hash": "1370067353100810765"
+      },
+      {
+        "file": "libs/database/src/repositories/utils.ts",
+        "hash": "6447751454820973054"
+      },
+      {
+        "file": "libs/interfaces/authentication/jwtPayload.interface.ts",
+        "hash": "9666044963582622263"
+      },
+      {
+        "file": "libs/dtos/authentication/create-client.dto.ts",
+        "hash": "17521418863116246565"
+      },
+      {
+        "file": "libs/database/src/index.ts",
+        "hash": "8127584840963902135"
       },
       {
         "file": "package.json",
-        "hash": "12034824338684457762"
+        "hash": "13156643700416885585"
       },
       {
-        "file": ".nx/workspace-data/eslint-2654242865465226088.hash",
-        "hash": "8603721285775142017"
+        "file": "libs/database/src/entities/user.entity.ts",
+        "hash": "15296492918642910361"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "15271102444815702258"
+        "file": "libs/config/config.interface.ts",
+        "hash": "9658695162061800143"
+      },
+      {
+        "file": "libs/database/src/repositories/user.repository.ts",
+        "hash": "9501572240276197799"
+      },
+      {
+        "file": "libs/database/src/repositories/index.ts",
+        "hash": "6504353146225756725"
+      },
+      {
+        "file": "libs/database/src/entities/client.entity.ts",
+        "hash": "1822608848859066926"
+      },
+      {
+        "file": "libs/constants/role-permissions.ts",
+        "hash": "9772074824096915698"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "8063448087613942741"
+      },
+      {
+        "file": "libs/config/config.module.ts",
+        "hash": "13143047207281215892"
+      },
+      {
+        "file": "libs/dtos/authentication/update-client.dto.ts",
+        "hash": "9969622810466348330"
+      },
+      {
+        "file": "libs/config/config.service.ts",
+        "hash": "8550223320938489237"
       }
     ],
-    "projectFileMap": {}
+    "projectFileMap": {
+      "auth": [
+        {
+          "file": "apps/auth/eslint.config.mjs",
+          "hash": "2624537849564014525"
+        },
+        {
+          "file": "apps/auth/jest.config.ts",
+          "hash": "17732519642613531051"
+        },
+        {
+          "file": "apps/auth/project.json",
+          "hash": "14441470194713845477"
+        },
+        {
+          "file": "apps/auth/src/app/app.controller.spec.ts",
+          "hash": "7647647754668916054",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/app.controller.ts",
+          "hash": "7304218408966095121",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/app.module.ts",
+          "hash": "14341114043391554091",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/typeorm",
+            "pdf-service"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/app.service.spec.ts",
+          "hash": "13111976464657524091",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/app.service.ts",
+          "hash": "9967902337593410053",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/authentication/authentication.controller.ts",
+          "hash": "17394261801899655374",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/passport",
+            "npm:jsonwebtoken",
+            "npm:express",
+            "pdf-service"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/authentication/authentication.module.ts",
+          "hash": "2857794073224476748",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/typeorm",
+            "npm:@nestjs/passport",
+            "pdf-service"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/authentication/authentication.service.ts",
+          "hash": "7660295744808553758",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/authentication/guards/jwt-auth.guard.ts",
+          "hash": "6157263441216470615",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:jsonwebtoken",
+            "npm:@nestjs/typeorm",
+            "npm:typeorm"
+          ]
+        },
+        {
+          "file": "apps/auth/src/app/authentication/strategies/google.strategy.ts",
+          "hash": "11169258055345519555",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/passport",
+            "npm:passport-google-oauth20"
+          ]
+        },
+        {
+          "file": "apps/auth/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/auth/src/assets/certificates/Sample1.pdf",
+          "hash": "2855395178585322198"
+        },
+        {
+          "file": "apps/auth/src/assets/certificates/sign.png",
+          "hash": "9657405432640944148"
+        },
+        {
+          "file": "apps/auth/src/main.ts",
+          "hash": "18341228519617448630",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:reflect-metadata"
+          ]
+        },
+        {
+          "file": "apps/auth/tsconfig.app.json",
+          "hash": "11728618664080294556"
+        },
+        {
+          "file": "apps/auth/tsconfig.json",
+          "hash": "241007772485627714"
+        },
+        {
+          "file": "apps/auth/tsconfig.spec.json",
+          "hash": "6622138706846345436"
+        },
+        {
+          "file": "apps/auth/webpack.config.js",
+          "hash": "18303366315229236147",
+          "deps": [
+            "npm:@nx/webpack"
+          ]
+        }
+      ],
+      "pdf-service": [
+        {
+          "file": "libs/pdf-service/README.md",
+          "hash": "18321869657501664136"
+        },
+        {
+          "file": "libs/pdf-service/package.json",
+          "hash": "8828245712307883418",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/pdf-service/project.json",
+          "hash": "17849367185270959776"
+        },
+        {
+          "file": "libs/pdf-service/src/index.ts",
+          "hash": "10691107972717279163"
+        },
+        {
+          "file": "libs/pdf-service/src/lib/pdf-service.ts",
+          "hash": "1526959914340994090",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:pdf-lib"
+          ]
+        },
+        {
+          "file": "libs/pdf-service/src/pdf-service.module.ts",
+          "hash": "14750403904384917797",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "libs/pdf-service/tsconfig.json",
+          "hash": "14490782888307098276"
+        },
+        {
+          "file": "libs/pdf-service/tsconfig.lib.json",
+          "hash": "15798669420171897096"
+        }
+      ],
+      "client": [
+        {
+          "file": "apps/client/eslint.config.mjs",
+          "hash": "2624537849564014525"
+        },
+        {
+          "file": "apps/client/jest.config.ts",
+          "hash": "9926608267011034723"
+        },
+        {
+          "file": "apps/client/project.json",
+          "hash": "13476711146806940794"
+        },
+        {
+          "file": "apps/client/src/app/app.controller.spec.ts",
+          "hash": "7647647754668916054",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/client/src/app/app.controller.ts",
+          "hash": "15276891910009544695",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/client/src/app/app.module.ts",
+          "hash": "11297549875446561857",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/typeorm"
+          ]
+        },
+        {
+          "file": "apps/client/src/app/app.service.spec.ts",
+          "hash": "13111976464657524091",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/client/src/app/app.service.ts",
+          "hash": "9967902337593410053",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/client/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/client/src/main.ts",
+          "hash": "6698234218950553684",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/client/tsconfig.app.json",
+          "hash": "11728618664080294556"
+        },
+        {
+          "file": "apps/client/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "apps/client/tsconfig.spec.json",
+          "hash": "6622138706846345436"
+        },
+        {
+          "file": "apps/client/webpack.config.js",
+          "hash": "10886720063873396612",
+          "deps": [
+            "npm:@nx/webpack"
+          ]
+        }
+      ]
+    }
   }
 }

@@ -1,18 +1,29 @@
 {
   "run": {
     "command": "nx serve auth",
-    "startTime": "2025-11-11T06:51:01.393Z",
-    "endTime": "2025-11-11T06:51:29.682Z",
+    "startTime": "2025-11-25T09:11:29.104Z",
+    "endTime": "2025-11-25T09:11:50.395Z",
     "inner": false
   },
   "tasks": [
     {
+      "taskId": "pdf-service:build",
+      "target": "build",
+      "projectName": "pdf-service",
+      "hash": "9366309000583474244",
+      "startTime": "2025-11-25T09:11:29.122Z",
+      "endTime": "2025-11-25T09:11:31.011Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
       "taskId": "auth:build",
       "target": "build",
       "projectName": "auth",
-      "hash": "17424987337161411733",
-      "startTime": "2025-11-11T06:51:01.442Z",
-      "endTime": "2025-11-11T06:51:07.522Z",
+      "hash": "17326547146087933979",
+      "startTime": "2025-11-25T09:11:31.024Z",
+      "endTime": "2025-11-25T09:11:35.707Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0

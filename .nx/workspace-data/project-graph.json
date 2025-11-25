@@ -1,5 +1,550 @@
 {
-  "nodes": {},
+  "nodes": {
+    "pdf-service": {
+      "name": "pdf-service",
+      "type": "lib",
+      "data": {
+        "root": "libs/pdf-service",
+        "targets": {
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "libs/pdf-service",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.mjs",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/libs/pdf-service",
+              "tsConfig": "libs/pdf-service/tsconfig.lib.json",
+              "packageJson": "libs/pdf-service/package.json",
+              "main": "libs/pdf-service/src/index.ts",
+              "assets": [
+                "libs/pdf-service/*.md"
+              ]
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "pdf-service",
+        "tags": [
+          "npm:private"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@your-workspace/pdf-service",
+            "packageMain": "./src/index.js",
+            "isInPackageManagerWorkspaces": false
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "libs/pdf-service/src",
+        "projectType": "library",
+        "implicitDependencies": []
+      }
+    },
+    "client": {
+      "name": "client",
+      "type": "app",
+      "data": {
+        "root": "apps/client",
+        "projectType": "application",
+        "metadata": {},
+        "targets": {
+          "build": {
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "webpack-cli"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/apps/client"
+            ],
+            "metadata": {
+              "technologies": [
+                "webpack"
+              ],
+              "description": "Runs Webpack build",
+              "help": {
+                "command": "npx webpack-cli build --help",
+                "example": {
+                  "options": {
+                    "json": "stats.json"
+                  },
+                  "args": [
+                    "--profile"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "apps/client",
+              "args": [
+                "node-env=production"
+              ],
+              "command": "webpack-cli build"
+            },
+            "configurations": {
+              "development": {
+                "args": [
+                  "node-env=development"
+                ]
+              }
+            },
+            "parallelism": true
+          },
+          "serve": {
+            "continuous": true,
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "buildTarget": "client:build",
+              "runBuildTargetDependencies": false
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "client:build:development"
+              },
+              "production": {
+                "buildTarget": "client:build:production"
+              }
+            },
+            "parallelism": true
+          },
+          "preview": {
+            "continuous": true,
+            "options": {
+              "cwd": "apps/client",
+              "args": [
+                "--node-env=production"
+              ],
+              "command": "webpack-cli serve"
+            },
+            "metadata": {
+              "technologies": [
+                "webpack"
+              ],
+              "description": "Starts Webpack dev server in production mode",
+              "help": {
+                "command": "npx webpack-cli serve --help",
+                "example": {
+                  "options": {
+                    "args": [
+                      "--client-progress",
+                      "--history-api-fallback "
+                    ]
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve-static": {
+            "continuous": true,
+            "dependsOn": [
+              "build"
+            ],
+            "executor": "@nx/web:file-server",
+            "options": {
+              "buildTarget": "build",
+              "spa": true
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "build-deps": {
+            "dependsOn": [
+              "^build"
+            ],
+            "configurations": {},
+            "options": {},
+            "parallelism": true,
+            "executor": "nx:noop"
+          },
+          "watch-deps": {
+            "continuous": true,
+            "dependsOn": [
+              "build-deps"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "npx nx watch --projects client --includeDependentProjects -- npx nx build-deps client"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/client",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.mjs",
+              "{workspaceRoot}/apps/client/eslint.config.mjs",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "metadata": {
+              "technologies": [
+                "jest"
+              ],
+              "description": "Run Jest Tests",
+              "help": {
+                "command": "npx jest --help",
+                "example": {
+                  "options": {
+                    "coverage": true
+                  }
+                }
+              }
+            },
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              {
+                "externalDependencies": [
+                  "jest"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/coverage/apps/client"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "apps/client",
+              "env": {
+                "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+              },
+              "command": "jest",
+              "passWithNoTests": true
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "client",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/client/src",
+        "tags": [],
+        "implicitDependencies": []
+      }
+    },
+    "auth": {
+      "name": "auth",
+      "type": "app",
+      "data": {
+        "root": "apps/auth",
+        "projectType": "application",
+        "metadata": {},
+        "targets": {
+          "build": {
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "webpack-cli"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/apps/auth"
+            ],
+            "metadata": {
+              "technologies": [
+                "webpack"
+              ],
+              "description": "Runs Webpack build",
+              "help": {
+                "command": "npx webpack-cli build --help",
+                "example": {
+                  "options": {
+                    "json": "stats.json"
+                  },
+                  "args": [
+                    "--profile"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "apps/auth",
+              "args": [
+                "node-env=production"
+              ],
+              "command": "webpack-cli build"
+            },
+            "configurations": {
+              "development": {
+                "args": [
+                  "node-env=development"
+                ]
+              }
+            },
+            "parallelism": true
+          },
+          "serve": {
+            "continuous": true,
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "buildTarget": "auth:build",
+              "runBuildTargetDependencies": false
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "auth:build:development"
+              },
+              "production": {
+                "buildTarget": "auth:build:production"
+              }
+            },
+            "parallelism": true
+          },
+          "preview": {
+            "continuous": true,
+            "options": {
+              "cwd": "apps/auth",
+              "args": [
+                "--node-env=production"
+              ],
+              "command": "webpack-cli serve"
+            },
+            "metadata": {
+              "technologies": [
+                "webpack"
+              ],
+              "description": "Starts Webpack dev server in production mode",
+              "help": {
+                "command": "npx webpack-cli serve --help",
+                "example": {
+                  "options": {
+                    "args": [
+                      "--client-progress",
+                      "--history-api-fallback "
+                    ]
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve-static": {
+            "continuous": true,
+            "dependsOn": [
+              "build"
+            ],
+            "executor": "@nx/web:file-server",
+            "options": {
+              "buildTarget": "build",
+              "spa": true
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "build-deps": {
+            "dependsOn": [
+              "^build"
+            ],
+            "configurations": {},
+            "options": {},
+            "parallelism": true,
+            "executor": "nx:noop"
+          },
+          "watch-deps": {
+            "continuous": true,
+            "dependsOn": [
+              "build-deps"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "npx nx watch --projects auth --includeDependentProjects -- npx nx build-deps auth"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/auth",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.mjs",
+              "{workspaceRoot}/apps/auth/eslint.config.mjs",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "metadata": {
+              "technologies": [
+                "jest"
+              ],
+              "description": "Run Jest Tests",
+              "help": {
+                "command": "npx jest --help",
+                "example": {
+                  "options": {
+                    "coverage": true
+                  }
+                }
+              }
+            },
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              {
+                "externalDependencies": [
+                  "jest"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/coverage/apps/auth"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "apps/auth",
+              "env": {
+                "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+              },
+              "command": "jest",
+              "passWithNoTests": true
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "auth",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/auth/src",
+        "tags": [],
+        "implicitDependencies": []
+      }
+    }
+  },
   "externalNodes": {
     "npm:@adobe/css-tools": {
       "type": "npm",
@@ -1882,6 +2427,15 @@
         "hash": "sha512-v7YRsW3Xi8HNTsO+jeHSEEqelX37TVWgwt+BcxtkG/OfXJEOs6GZdbdza200d6KqId1pJQZ6UPj1F0M6E+mxaA=="
       }
     },
+    "npm:@nestjs/passport": {
+      "type": "npm",
+      "name": "npm:@nestjs/passport",
+      "data": {
+        "version": "11.0.5",
+        "packageName": "@nestjs/passport",
+        "hash": "sha512-ulQX6mbjlws92PIM15Naes4F4p2JoxGnIJuUsdXQPT+Oo2sqQmENEZXM7eYuimocfHnKlcfZOuyzbA33LwUlOQ=="
+      }
+    },
     "npm:@nestjs/platform-express": {
       "type": "npm",
       "name": "npm:@nestjs/platform-express",
@@ -2258,6 +2812,24 @@
         "version": "2.5.1",
         "packageName": "@parcel/watcher-win32-x64",
         "hash": "sha512-9lHBdJITeNR++EvSQVUcaZoWupyHfXe1jZvGZ06O/5MflPcuPLtEphScIBL+AiCWBO46tDSHzWyD0uDmmZqsgA=="
+      }
+    },
+    "npm:@pdf-lib/standard-fonts": {
+      "type": "npm",
+      "name": "npm:@pdf-lib/standard-fonts",
+      "data": {
+        "version": "1.0.0",
+        "packageName": "@pdf-lib/standard-fonts",
+        "hash": "sha512-hU30BK9IUN/su0Mn9VdlVKsWBS6GyhVfqjwl1FjZN4TxP6cCw0jP2w7V3Hf5uX7M0AZJ16vey9yE0ny7Sa59ZA=="
+      }
+    },
+    "npm:@pdf-lib/upng": {
+      "type": "npm",
+      "name": "npm:@pdf-lib/upng",
+      "data": {
+        "version": "1.0.1",
+        "packageName": "@pdf-lib/upng",
+        "hash": "sha512-dQK2FUMQtowVP00mtIksrlZhdFXQZPC+taih1q4CvPZ5vqdxR/LKBaFg0oAfzd1GlHZXXSPdQfzQnt+ViGvEIQ=="
       }
     },
     "npm:@phenomnomnominal/tsquery": {
@@ -3671,6 +4243,15 @@
         "version": "1.5.1",
         "packageName": "base64-js",
         "hash": "sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA=="
+      }
+    },
+    "npm:base64url": {
+      "type": "npm",
+      "name": "npm:base64url",
+      "data": {
+        "version": "3.0.1",
+        "packageName": "base64url",
+        "hash": "sha512-ir1UPr3dkwexU7FdV8qBBbNDRUhMmIekYMFZfi+C/sLNnRESKPl23nB9b2pltqfOQNnGzsDdId90AEtG5tCx4A=="
       }
     },
     "npm:basic-auth": {
@@ -7849,6 +8430,15 @@
         "hash": "sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg=="
       }
     },
+    "npm:oauth": {
+      "type": "npm",
+      "name": "npm:oauth",
+      "data": {
+        "version": "0.10.2",
+        "packageName": "oauth",
+        "hash": "sha512-JtFnB+8nxDEXgNyniwz573xxbKSOu3R8D40xQKqcjwJ2CDkYqUDI53o6IuzDJBx60Z8VKCm271+t8iFjakrl8Q=="
+      }
+    },
     "npm:object-assign": {
       "type": "npm",
       "name": "npm:object-assign",
@@ -8002,6 +8592,15 @@
         "hash": "sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw=="
       }
     },
+    "npm:pako": {
+      "type": "npm",
+      "name": "npm:pako",
+      "data": {
+        "version": "1.0.11",
+        "packageName": "pako",
+        "hash": "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="
+      }
+    },
     "npm:parent-module": {
       "type": "npm",
       "name": "npm:parent-module",
@@ -8045,6 +8644,42 @@
         "version": "1.3.3",
         "packageName": "parseurl",
         "hash": "sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ=="
+      }
+    },
+    "npm:passport": {
+      "type": "npm",
+      "name": "npm:passport",
+      "data": {
+        "version": "0.7.0",
+        "packageName": "passport",
+        "hash": "sha512-cPLl+qZpSc+ireUvt+IzqbED1cHHkDoVYMo30jbJIdOOjQ1MQYZBPiNvmi8UM6lJuOpTPXJGZQk0DtC4y61MYQ=="
+      }
+    },
+    "npm:passport-google-oauth20": {
+      "type": "npm",
+      "name": "npm:passport-google-oauth20",
+      "data": {
+        "version": "2.0.0",
+        "packageName": "passport-google-oauth20",
+        "hash": "sha512-KSk6IJ15RoxuGq7D1UKK/8qKhNfzbLeLrG3gkLZ7p4A6DBCcv7xpyQwuXtWdpyR0+E0mwkpjY1VfPOhxQrKzdQ=="
+      }
+    },
+    "npm:passport-oauth2": {
+      "type": "npm",
+      "name": "npm:passport-oauth2",
+      "data": {
+        "version": "1.8.0",
+        "packageName": "passport-oauth2",
+        "hash": "sha512-cjsQbOrXIDE4P8nNb3FQRCCmJJ/utnFKEz2NX209f7KOHPoX18gF7gBzBbLLsj2/je4KrgiwLLGjf0lm9rtTBA=="
+      }
+    },
+    "npm:passport-strategy": {
+      "type": "npm",
+      "name": "npm:passport-strategy",
+      "data": {
+        "version": "1.0.0",
+        "packageName": "passport-strategy",
+        "hash": "sha512-CB97UUvDKJde2V0KDWWB3lyf6PC3FaZP7YxZ2G8OAtn9p4HI9j9JLP9qjOGZFvyl8uwNT8qM+hGnz/n16NI7oA=="
       }
     },
     "npm:path-exists": {
@@ -8126,6 +8761,42 @@
         "version": "4.0.0",
         "packageName": "path-type",
         "hash": "sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw=="
+      }
+    },
+    "npm:pause": {
+      "type": "npm",
+      "name": "npm:pause",
+      "data": {
+        "version": "0.0.1",
+        "packageName": "pause",
+        "hash": "sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg=="
+      }
+    },
+    "npm:pdf-lib": {
+      "type": "npm",
+      "name": "npm:pdf-lib",
+      "data": {
+        "version": "1.17.1",
+        "packageName": "pdf-lib",
+        "hash": "sha512-V/mpyJAoTsN4cnP31vc0wfNA1+p20evqqnap0KLoRUN0Yk/p3wN52DOEsL4oBFcLdb76hlpKPtzJIgo67j/XLw=="
+      }
+    },
+    "npm:tslib@1.14.1": {
+      "type": "npm",
+      "name": "npm:tslib@1.14.1",
+      "data": {
+        "version": "1.14.1",
+        "packageName": "tslib",
+        "hash": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+      }
+    },
+    "npm:tslib": {
+      "type": "npm",
+      "name": "npm:tslib",
+      "data": {
+        "version": "2.8.1",
+        "packageName": "tslib",
+        "hash": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
       }
     },
     "npm:picocolors": {
@@ -9712,15 +10383,6 @@
         "hash": "sha512-fw/7265mIWukrSHd0i+wSwx64kYUSAKPfxRDksjKIYTxSAp9W9/xcZVBF4Kl0eqQd5eBpAQ/oQrc5RyM/0c1GQ=="
       }
     },
-    "npm:tslib": {
-      "type": "npm",
-      "name": "npm:tslib",
-      "data": {
-        "version": "2.8.1",
-        "packageName": "tslib",
-        "hash": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
-      }
-    },
     "npm:type-check": {
       "type": "npm",
       "name": "npm:type-check",
@@ -9809,6 +10471,15 @@
         "version": "2.0.2",
         "packageName": "uid",
         "hash": "sha512-u3xV3X7uzvi5b1MncmZo3i2Aw222Zk1keqLA1YkHldREkAhAqi65wuPfe7lHx8H/Wzy+8CE7S7uS3jekIM5s8g=="
+      }
+    },
+    "npm:uid2": {
+      "type": "npm",
+      "name": "npm:uid2",
+      "data": {
+        "version": "0.0.4",
+        "packageName": "uid2",
+        "hash": "sha512-IevTus0SbGwQzYh3+fRsAMTVVPOoIVufzacXcHPmdlle1jUpq7BRL+mw3dgeLanvGZdwwbWhRV6XrcFNdBmjWA=="
       }
     },
     "npm:uint8array-extras": {
@@ -10236,6 +10907,112 @@
     }
   },
   "dependencies": {
+    "pdf-service": [
+      {
+        "source": "pdf-service",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "pdf-service",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "pdf-service",
+        "target": "npm:pdf-lib",
+        "type": "static"
+      }
+    ],
+    "client": [
+      {
+        "source": "client",
+        "target": "npm:@nestjs/testing",
+        "type": "static"
+      },
+      {
+        "source": "client",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "client",
+        "target": "npm:@nestjs/typeorm",
+        "type": "static"
+      },
+      {
+        "source": "client",
+        "target": "npm:@nestjs/core",
+        "type": "static"
+      },
+      {
+        "source": "client",
+        "target": "npm:@nx/webpack",
+        "type": "static"
+      }
+    ],
+    "auth": [
+      {
+        "source": "auth",
+        "target": "npm:@nestjs/testing",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:@nestjs/typeorm",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "pdf-service",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:@nestjs/passport",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:jsonwebtoken",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:express",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:typeorm",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:passport-google-oauth20",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:@nestjs/core",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:reflect-metadata",
+        "type": "static"
+      },
+      {
+        "source": "auth",
+        "target": "npm:@nx/webpack",
+        "type": "static"
+      }
+    ],
     "npm:@ampproject/remapping": [
       {
         "source": "npm:@ampproject/remapping",
@@ -13525,6 +14302,18 @@
         "type": "static"
       }
     ],
+    "npm:@nestjs/passport": [
+      {
+        "source": "npm:@nestjs/passport",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/passport",
+        "target": "npm:passport",
+        "type": "static"
+      }
+    ],
     "npm:@nestjs/platform-express": [
       {
         "source": "npm:@nestjs/platform-express",
@@ -14463,6 +15252,20 @@
       {
         "source": "npm:@parcel/watcher",
         "target": "npm:@parcel/watcher-win32-x64",
+        "type": "static"
+      }
+    ],
+    "npm:@pdf-lib/standard-fonts": [
+      {
+        "source": "npm:@pdf-lib/standard-fonts",
+        "target": "npm:pako",
+        "type": "static"
+      }
+    ],
+    "npm:@pdf-lib/upng": [
+      {
+        "source": "npm:@pdf-lib/upng",
+        "target": "npm:pako",
         "type": "static"
       }
     ],
@@ -20625,6 +21428,57 @@
         "type": "static"
       }
     ],
+    "npm:passport": [
+      {
+        "source": "npm:passport",
+        "target": "npm:passport-strategy",
+        "type": "static"
+      },
+      {
+        "source": "npm:passport",
+        "target": "npm:pause",
+        "type": "static"
+      },
+      {
+        "source": "npm:passport",
+        "target": "npm:utils-merge",
+        "type": "static"
+      }
+    ],
+    "npm:passport-google-oauth20": [
+      {
+        "source": "npm:passport-google-oauth20",
+        "target": "npm:passport-oauth2",
+        "type": "static"
+      }
+    ],
+    "npm:passport-oauth2": [
+      {
+        "source": "npm:passport-oauth2",
+        "target": "npm:base64url",
+        "type": "static"
+      },
+      {
+        "source": "npm:passport-oauth2",
+        "target": "npm:oauth",
+        "type": "static"
+      },
+      {
+        "source": "npm:passport-oauth2",
+        "target": "npm:passport-strategy",
+        "type": "static"
+      },
+      {
+        "source": "npm:passport-oauth2",
+        "target": "npm:uid2",
+        "type": "static"
+      },
+      {
+        "source": "npm:passport-oauth2",
+        "target": "npm:utils-merge",
+        "type": "static"
+      }
+    ],
     "npm:path-scurry": [
       {
         "source": "npm:path-scurry",
@@ -20634,6 +21488,28 @@
       {
         "source": "npm:path-scurry",
         "target": "npm:minipass",
+        "type": "static"
+      }
+    ],
+    "npm:pdf-lib": [
+      {
+        "source": "npm:pdf-lib",
+        "target": "npm:@pdf-lib/standard-fonts",
+        "type": "static"
+      },
+      {
+        "source": "npm:pdf-lib",
+        "target": "npm:@pdf-lib/upng",
+        "type": "static"
+      },
+      {
+        "source": "npm:pdf-lib",
+        "target": "npm:pako",
+        "type": "static"
+      },
+      {
+        "source": "npm:pdf-lib",
+        "target": "npm:tslib@1.14.1",
         "type": "static"
       }
     ],
@@ -23913,5 +24789,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1764059684080
+  "computedAt": 1764061899345
 }

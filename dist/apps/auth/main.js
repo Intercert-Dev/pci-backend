@@ -3344,10 +3344,10 @@ async function bootstrap() {
     config.loadFromEnv();
     // const port = config.get().servicePorts.authentication || 3000;
     const port = 3000;
-    // await app.listen(port);
-    await app.listen(port, '0.0.0.0');
-    console.log(`Server running on http://0.0.0.0:${port}`);
-    // Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
+    await app.listen(port);
+    // await app.listen(port, '0.0.0.0');
+    // console.log(`Server running on http://0.0.0.0:${port}`);
+    common_1.Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }
 bootstrap();
 
