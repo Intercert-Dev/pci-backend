@@ -1,0 +1,20 @@
+{
+  "name": "pdf-service",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/pdf-service/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/pdf-service",
+        "tsConfig": "libs/pdf-service/tsconfig.lib.json",
+        "packageJson": "libs/pdf-service/package.json",
+        "main": "libs/pdf-service/src/index.ts",
+        "assets": ["libs/pdf-service/*.md"]
+      }
+    }
+  }
+}

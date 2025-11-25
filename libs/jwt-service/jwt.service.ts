@@ -28,28 +28,52 @@ export class JwtService {
     return { expiryTimeInSecs, JWTSecretKey };
   }
 
-  public generateJWTToken(payload: Partial<JWTPayload>): Promise<string> {
-    const { expiryTimeInSecs, JWTSecretKey } = this.getJWTTokenInfo();
+  // public generateJWTToken(payload: Partial<JWTPayload>): Promise<string> {
+  //   const { expiryTimeInSecs, JWTSecretKey } = this.getJWTTokenInfo();
 
-    return new Promise((resolve, reject) => {
-      jwt.sign(
-        payload,
-        Buffer.from(JWTSecretKey, 'base64'),
-        { expiresIn: expiryTimeInSecs, algorithm: 'HS512' },
-        (err: Error | null, token?: string) => {
-          if (err || !token) {
-            reject({
-              statusCode: ERROR_CODES.ERROR_UNKNOWN_SHOW_TO_USER,
-              message: 'Error while creating JWT token',
-              extraError: err,
-            });
-          } else {
-            resolve(token);
-          }
+  //   return new Promise((resolve, reject) => {
+  //     jwt.sign(
+  //       payload,
+  //       Buffer.from(JWTSecretKey, 'base64'),
+  //       { expiresIn: expiryTimeInSecs, algorithm: 'HS512' },
+  //       (err: Error | null, token?: string) => {
+  //         if (err || !token) {
+  //           reject({
+  //             statusCode: ERROR_CODES.ERROR_UNKNOWN_SHOW_TO_USER,
+  //             message: 'Error while creating JWT token',
+  //             extraError: err,
+  //           });
+  //         } else {
+  //           resolve(token);
+  //         }
+  //       }
+  //     );
+  //   });
+  // }
+
+  public generateJWTToken(payload: Partial<JWTPayload>): Promise<string> {
+  const JWTSecretKey = process.env.JWT_SECRET_KEY;   // 🔥 direct environment variable
+  const expiryTimeInSecs = "1h";                     // or your existing logic
+
+  return new Promise((resolve, reject) => {
+    jwt.sign(
+      payload,
+      JWTSecretKey,                                   // 🔥 no Buffer, no base64 decode
+      { expiresIn: expiryTimeInSecs, algorithm: 'HS512' },
+      (err: Error | null, token?: string) => {
+        if (err || !token) {
+          reject({
+            message: 'Error while creating JWT token',
+            extraError: err,
+          });
+        } else {
+          resolve(token);
         }
-      );
-    });
-  }
+      }
+    );
+  });
+}
+
 
   public generateGuestJWTToken(payload: Partial<JWTPayloadForGuest>): Promise<string> {
     const { expiryTimeInSecs, JWTSecretKey } = this.getJWTTokenInfo();

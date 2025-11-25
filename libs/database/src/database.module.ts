@@ -4,7 +4,11 @@ import { ConfigModule } from '../../config/config.module';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigDatabase } from '../../config/config.interface';
 import { User } from './entities/user.entity';
+import { Client } from './entities/client.entity';
+import { Session } from './entities/session.entity';
 import { UserRepositoryService } from './repositories/user.repository';
+import {SessionRepositoryService} from './repositories/session.repository';
+import {ClientRepositoryService} from './repositories/client.repository';
 import { TransactionManager } from './repositories/utils';
 import { DataSource } from 'typeorm';
 
@@ -19,7 +23,7 @@ export class DBModule {
         const connectionOptions = this.getConnectionOptionsMySQL(dbData);
         return {
             ...connectionOptions,
-            entities: [User],
+            entities: [User,Session,Client],
             synchronize: true,   // Set to false in production
             logging: false,
             migrationsRun: false,
@@ -46,7 +50,7 @@ export class DBModule {
             database,
             logging,
             synchronize,
-            entities: [User], // Alternatively let TypeORM auto-load entities
+            entities: [User,Session,Client], // Alternatively let TypeORM auto-load entities
         };
     }
 
@@ -61,18 +65,18 @@ export class DBModule {
                     },
                     inject: [ConfigService],
                 }),
-                TypeOrmModule.forFeature([ User]),
+                TypeOrmModule.forFeature([ User,Session,Client]),
             ],
             controllers: [],
             providers: [
-                UserRepositoryService,
+                UserRepositoryService,SessionRepositoryService,ClientRepositoryService,
                 {
                     provide: TransactionManager,
                     useFactory: (dataSource: DataSource) => new TransactionManager(dataSource),
                     inject: [DataSource],
                 },
             ],
-            exports: [UserRepositoryService],
+            exports: [UserRepositoryService,SessionRepositoryService,ClientRepositoryService],
         };
     }
 }

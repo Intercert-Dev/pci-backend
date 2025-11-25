@@ -1,0 +1,1 @@
+{"version":3,"file":"pdf-service.module.js","sourceRoot":"","sources":["../../../../libs/pdf-service/src/pdf-service.module.ts"],"names":[],"mappings":";;;;AAAA,2CAAwC;AACxC,mDAAsD;AAM/C,IAAM,gBAAgB,GAAtB,MAAM,gBAAgB;CAAG,CAAA;AAAnB,4CAAgB;2BAAhB,gBAAgB;IAJ5B,IAAA,eAAM,EAAC;QACN,SAAS,EAAE,CAAC,+BAAiB,CAAC;QAC9B,OAAO,EAAE,CAAC,+BAAiB,CAAC;KAC7B,CAAC;GACW,gBAAgB,CAAG"}

@@ -1,16 +1,20 @@
-import { USER_TYPE } from "../../constants/authentication/userConstants";
+import { Role } from "../../constants/authentication/userConstants";
 // import { USER_TYPE } from "../../constants/autenticationConstants/userContants";
 import { ERROR_CODES, ErrorMessages, TOKEN_TYPE } from "../../constants/commonConstants";
 
 export interface JWTPayload
 {
-    reference_id: string,
-    guest_id: string,
-    refresh_token: string,
-    user_role: string,
-    session_id: string,
-    user_type: USER_TYPE,
-    token_type: TOKEN_TYPE 
+    // reference_id: string,
+    // guest_id: string,
+    // refresh_token: string,
+    // user_role: string,
+    // session_id: string,
+    // user_type: USER_TYPE,
+    // token_type: TOKEN_TYPE 
+
+    userId:string,
+    email:string,
+    userRole:Role,
 }
 
 export interface JWTPayloadForGuest

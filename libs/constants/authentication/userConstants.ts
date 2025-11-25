@@ -5,6 +5,14 @@ export enum ACCOUNT_STATUS {
     DELETED = 'DELETED'
 }
 
+
+export enum AUDIT_STATUS {
+    TO_DO = "TO_DO",
+    IN_PROGRESS = "IN_PROGRESS",
+    REPORT_IN_REVIEW = "REPORT_IN_REVIEW",
+    CLOSED = "CLOSED"
+}
+
 export enum DEFAULT_USER_ROLES {
     SELLER = "SELLER",
     USER = "USER",

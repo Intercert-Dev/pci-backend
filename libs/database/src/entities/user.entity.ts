@@ -1,9 +1,20 @@
-import { Column, Entity,ManyToOne,OneToMany,PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn
+} from "typeorm";
+
 import "reflect-metadata";
 import { Role } from '../../../constants/authentication/userConstants'
+import { Session } from "./session.entity"; // adjust path
+import { Client } from "./client.entity"; // adjust path
 
 @Entity('user')
-export class User{
+export class User {
     @PrimaryGeneratedColumn("uuid")
     user_id: string;
 
@@ -22,14 +33,25 @@ export class User{
     })
     role: Role;
 
-    // Self-referencing to support hierarchy (created by which user)
     @ManyToOne(() => User, user => user.children, { nullable: true, onDelete: 'CASCADE' })
     createdBy: User;
 
     @OneToMany(() => User, user => user.createdBy)
     children: User[];
 
+    @OneToMany(() => Client, client => client.createdBy)
+    clients: Client[];
+
     @Column({ default: true })
     isActive: boolean;
 
+    // ⭐ Relation to Sessions
+    @OneToMany(() => Session, session => session.user)
+    sessions: Session[];
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 }
